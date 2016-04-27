@@ -14,8 +14,6 @@ paths:
   /users/login:
     post:
       description: "Get a Authorization token to perform actions on behalf of a user"
-      consumes:
-      - "application/json"
       produces:
       - "application/json"
       parameters:
