@@ -1,0 +1,387 @@
+
+
+---
+swagger: "2.0"
+info:
+  version: "2016-04-25T20:08:40Z"
+  title: "DemoDrop"
+  description: "To use this API you need to pass `x-api-key` in the header of each request, this key you can get <a href=\"mailto:support@demodrop.com\">here</a>.<br><br>
+  To perform actions on behalf of a user you need to pass a `Authorization` token in the header of each request, you can get a Authorization token with the <a href=\"#reference/0/userslogin/post\">/users/login</a> method."
+host: "api.demodrop.com"
+schemes:
+- "https"
+paths:
+  /users/login:
+    post:
+      description: "Get a Authorization token to perform actions on behalf of a user"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Accept"
+        in: "header"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "Login"
+        required: true
+        schema:
+          $ref: "#/definitions/Login"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Token"
+        403:
+          description: "403 response"
+          schema:
+            $ref: "#/definitions/Error"
+  /users/{id}:
+    get:
+      description: "Retrieve basic information about a user"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Accept"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/User"
+  /users/{id}/followers:
+    get:
+      description: "Retrieve a list of users that follow a user"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    post:
+      description: "Follow a user"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Ok"
+    delete:
+      description: "Unfollow a user"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Ok"
+  /users/{id}/following:
+    get:
+      description: "Retrieve a list of users that a user is following"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /users/{id}/tracks:
+    get:
+      description: "Retrieve a list of tracks a user has uploaded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /tracks:
+    get:
+      description: "Retrieve a list of the latest tracks"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Accept"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /tracks/{id}:
+    get:
+      description: "Retrieve basic information about a track"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Accept"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+        403:
+          description: "403 response"
+          schema:
+            $ref: "#/definitions/Error"
+  /tracks/{id}/dislikes:
+    get:
+      description: "Retrieve the list of users that disliked a track"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    post:
+      description: "Dislike a track"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Ok"
+    delete:
+      description: "Undo the disliking of a track"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Ok"
+  /tracks/{id}/likes:
+    get:
+      description: "Retrieve a list of users that liked/supported a track"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    post:
+      description: "Like a track"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Ok"
+    delete:
+      description: "Undo the liking of a track"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Ok"
+  /tracks/{id}/plays:
+    get:
+      description: "Retrieve a list of users that played a track"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    post:
+      description: "Register that the user played this track"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /waveforms/{md5hash}:
+    get:
+      description: "Retrieve an array of waveform points of a track"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "md5hash"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Waveform"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+        404:
+          description: "404 response"
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "x-api-key"
+    in: "header"
+definitions:
+  Empty:
+    type: "object"
+  User:
+    type: "object"
+    required:
+    - "id"
+    - "images"
+    - "link"
+    - "verified"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      location:
+        type: "string"
+      link:
+        type: "string"
+      images:
+        type: "object"
+        properties:
+          small:
+            type: "string"
+          large:
+            type: "string"
+          medium:
+            type: "string"
+      verified:
+        type: "boolean"
+  Error:
+    type: "object"
+    required:
+    - "code"
+    - "message"
+    - "title"
+    properties:
+      code:
+        type: "string"
+      title:
+        type: "string"
+      message:
+        type: "string"
+  Ok:
+    type: "object"
+    required:
+    - "acknoledged"
+    properties:
+      acknoledged:
+        type: "boolean"
+  Token:
+    type: "object"
+    required:
+    - "token"
+    properties:
+      token:
+        type: "string"
+  Waveform:
+    type: "object"
+    required:
+    - "points"
+    properties:
+      token:
+        type: "string"
+  Login:
+    type: "object"
+    required:
+    - "password"
+    - "username"
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
