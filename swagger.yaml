@@ -8,6 +8,9 @@ info:
 host: "api.demodrop.com"
 schemes:
 - "https"
+basePath: "/v1.0"
+produces:
+  - application/json
 paths:
   /users/login:
     post:
