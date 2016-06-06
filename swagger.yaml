@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   version: "2016-04-25T20:08:40Z"
   title: "DemoDrop"
-  description: "To use this API you need to pass `x-api-key` in the header of each request, you can apply for a key <a href=\"\">here</a>.<br><br>
+  description: "To use this API you need to pass `x-api-key` in the header of each request, you can apply for a key <a href=\"mailto:support@demodrop.com\">here</a>.<br><br>
   To perform actions on behalf of a user you need to pass a `Authorization` token in the header, you can get a Authorization token with the <a href=\"#reference/0/userslogin/post\">/users/login</a> method."
 host: "api.demodrop.com"
 schemes:
@@ -461,7 +461,7 @@ definitions:
       name: "John Doe"
       location: "Amsterdam, Netherlands"
       totals:
-        tracks: 0
+        tracks: 10
         support: 4
         followers: 2452
         following: 154
