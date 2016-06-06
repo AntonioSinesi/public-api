@@ -68,7 +68,7 @@ paths:
         200:
           description: "200 response"
           schema:
-            $ref: "#/definitions/Empty"
+            $ref: "#/definitions/Users"
     post:
       description: "Follow a user"
       produces:
@@ -115,7 +115,7 @@ paths:
         200:
           description: "200 response"
           schema:
-            $ref: "#/definitions/Empty"
+            $ref: "#/definitions/Users"
   /users/{id}/tracks:
     get:
       description: "Retrieve a list of tracks a user has uploaded"
@@ -130,7 +130,7 @@ paths:
         200:
           description: "200 response"
           schema:
-            $ref: "#/definitions/Empty"
+            $ref: "#/definitions/Tracks"
   /tracks:
     get:
       description: "Retrieve a list of the latest tracks"
@@ -145,7 +145,7 @@ paths:
         200:
           description: "200 response"
           schema:
-            $ref: "#/definitions/Empty"
+            $ref: "#/definitions/Track"
   /tracks/{id}:
     get:
       description: "Retrieve basic information about a track"
@@ -164,7 +164,7 @@ paths:
         200:
           description: "200 response"
           schema:
-            $ref: "#/definitions/Empty"
+            $ref: "#/definitions/Track"
         403:
           description: "403 response"
           schema:
@@ -183,7 +183,7 @@ paths:
         200:
           description: "200 response"
           schema:
-            $ref: "#/definitions/Empty"
+            $ref: "#/definitions/Users"
     post:
       description: "Dislike a track"
       produces:
@@ -226,7 +226,7 @@ paths:
         200:
           description: "200 response"
           schema:
-            $ref: "#/definitions/Empty"
+            $ref: "#/definitions/Users"
     post:
       description: "Like a track"
       produces:
@@ -269,7 +269,7 @@ paths:
         200:
           description: "200 response"
           schema:
-            $ref: "#/definitions/Empty"
+            $ref: "#/definitions/Users"
     post:
       description: "Register that the user played this track"
       produces:
@@ -316,16 +316,173 @@ securityDefinitions:
 definitions:
   Empty:
     type: "object"
-  User:
+  Meta:
     type: "object"
     required:
+    - "prev"
+    - "next"
+    properties:
+      prev:
+        type: "string"
+      next:
+        type: "string"
+    example:
+      prev: "http://api.demodrop.com/tracks?size=25&page=1"
+      next: "http://api.demodrop.com/tracks?size=25&page=3"
+  Tracks:
+    type: "object"
+    required:
+    - "data"
+    - "meta"
+    properties:
+      data:
+        type: "array"
+        items:
+          "$ref": "#/definitions/Track"
+      meta:
+        "$ref": "#/definitions/Meta"
+  Track:
+    type: "object"
+    example:
+      id: 12344
+      name: "Firebeatz vs. Calvin Harris ft. Ayah Marar - Thinking About F*cking GO (Ivan Voltes Mashup)"
+      status: "live"
+      type: "mashup-edit"
+      genre: "electro-house"
+      duration: "5:53"
+      link: "/ivanvoltes/thinking-about-fcking-go"
+      images: 
+        small: "https://d2la6fe27fmy37.cloudfront.net/b36f1c6bd397b50ef8586c173b4e1fff.jpg"
+        medium: "https://d2la6fe27fmy37.cloudfront.net/200x200/b36f1c6bd397b50ef8586c173b4e1fff.jpg"
+        large: "https://d2la6fe27fmy37.cloudfront.net/b36f1c6bd397b50ef8586c173b4e1fff.jpg"
+      created: "2013-09-29 13:45:46"
+      stats: 
+        plays: 117
+        likes: 17
+        downloads: 17
+        comments: 0
+      privacy: 
+        listen: "public"
+        download: "public"
+      user: 
+        id: 5581
+        name: "Ivan Voltes"
+        location: null
+        link: null
+        totals: 
+          tracks: 0
+          support: 0
+          followers: 0
+          following: 0
+        images: 
+          small: "https://d2la6fe27fmy37.cloudfront.net/b36f1c6bd397b50ef8586c173b4e1fff.jpg"
+          medium: "https://d2la6fe27fmy37.cloudfront.net/200x200/b36f1c6bd397b50ef8586c173b4e1fff.jpg"
+          large: "https://d2la6fe27fmy37.cloudfront.net/b36f1c6bd397b50ef8586c173b4e1fff.jpg"
+        verified: false
+      is: 
+        disliked: false
+        liked: false
+        owner: false
+        starred: false
+    properties:
+      id: 
+        type: "integer"
+        minimum: 1
+      name: 
+        type: "string"
+      status: 
+        type: "string"
+      type: 
+        type: "string"
+      genre: 
+        type: "string"
+      duration: 
+        type: "string"
+      link: 
+        type: "string"
+      images: 
+        type: "object"
+        properties:
+          small: 
+            type: "string"
+          medium: 
+            type: "string"
+          large: 
+            type: "string"
+      created: 
+        type: "string"
+      stats: 
+        type: "object"
+        properties:
+          plays: 
+            type: "integer"
+          likes:
+            type: "integer"
+          downloads:
+            type: "integer"
+          comments: 
+            type: "integer"
+      privacy: 
+        type: "object"
+        properties:
+          listen: 
+            type: "string"
+          download: 
+            type: "string"
+      user: 
+        "$ref": "#/definitions/User"
+      is: 
+        type: "object"
+        properties:
+          disliked: 
+            type: "boolean"
+          liked: 
+            type: "boolean"
+          owner: 
+            type: "boolean"
+          starred: 
+            type: "boolean"
+  Users:
+    type: "object"
+    required:
+    - "data"
+    - "meta"
+    properties:
+      data:
+        type: "array"
+        items:
+          "$ref": "#/definitions/User"
+      meta:
+        "$ref": "#/definitions/Meta"
+  User:
+    type: "object"
+    example:
+      id: 123456
+      name: "John Doe"
+      location: "Amsterdam, Netherlands"
+      totals:
+        tracks: 0
+        support: 4
+        followers: 2452
+        following: 154
+      images:
+        small: "https://d2la6fe27fmy37.cloudfront.net/100x100/1ebfec6b961d277b5660566886e8b977.jpg"
+        medium: "https://d2la6fe27fmy37.cloudfront.net/200x200/1ebfec6b961d277b5660566886e8b977.jpg"
+        large: "https://d2la6fe27fmy37.cloudfront.net/400x400/1ebfec6b961d277b5660566886e8b977.jpg"
+      link: "http://demodrop.com/johndoe"
+      verified: false
+    required:
     - "id"
+    - "name"
+    - "location"
+    - "totals"
     - "images"
     - "link"
     - "verified"
     properties:
       id:
         type: "integer"
+        minimum: 1
       name:
         type: "string"
       location:
@@ -377,6 +534,10 @@ definitions:
     properties:
       token:
         type: "string"
+      points:
+        type: "array"
+        items:
+          type: "integer"
   Login:
     type: "object"
     required:
