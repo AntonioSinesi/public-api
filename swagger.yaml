@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   version: "2016-04-25T20:08:40Z"
   title: "DemoDrop"
-  description: "To use this API you need to pass `x-api-key` in the header of each request, you can apply for a key <a href=\"mailto:support@demodrop.com\">here</a>.<br><br>
+  description: "To use this API you need to pass `x-api-key` in the header of each request, you can apply for a key <a href=\"mailto:support@demodrop.com?subject=public+api\">here</a>.<br><br>
   To perform actions on behalf of a user you need to pass a `Authorization` token in the header, you can get a Authorization token with the <a href=\"#reference/0/userslogin/post\">/users/login</a> method."
 host: "api.demodrop.com"
 schemes:
@@ -133,12 +133,27 @@ paths:
             $ref: "#/definitions/Tracks"
   /tracks:
     get:
-      description: "Retrieve a list of the latest tracks"
+      description: "Retrieve a list of tracks"
       produces:
       - "application/json"
       parameters:
       - name: "Accept"
         in: "header"
+        required: false
+        type: "string"
+      - name: "type"
+        in: "query"
+        description: "filter by track type"
+        required: false
+        type: "string"
+      - name: "genre"
+        description: "filter by music genre"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "sort"
+        description: "sort by: trending | discover | newest"
+        in: "query"
         required: false
         type: "string"
       responses:
