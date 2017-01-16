@@ -143,19 +143,28 @@ paths:
         type: "string"
       - name: "type"
         in: "query"
-        description: "filter by track type"
+        description: "Filter by track type(s), To see all available genres call <a href=\"#reference/0/userslogin/post\">GET /tracks/types</a>"
         required: false
         type: "string"
+        enum: ["promo", "workinprogress", "bootleg-remix", "mashup-edit", "acapella"]
       - name: "genre"
-        description: "filter by music genre"
+        description: "Filter by music genre(s), To see all available genres call <a href=\"#reference/0/userslogin/post\">GET /tracks/genres</a>"
+        in: "query"
+        required: false
+        type: "string"
+        enum: ["deep-house", "drum-bass", "dubstep", "electro-house", "glitch-hop", "hardcore", "hardstyle", "hip-hop", "house", "minimal", "progressive-house", "r-and-b", "tech-house", "techno", "trance", "trap-moombhaton"]
+      - name: "search"
+        description: "Filter by keyword(s)."
         in: "query"
         required: false
         type: "string"
       - name: "sort"
-        description: "sort by: trending | discover | newest"
+        description: "Sort the results."
+        enum: ["trending", "discover", "newest", "best"]
         in: "query"
         required: false
         type: "string"
+        default: "newest"
       responses:
         200:
           description: "200 response"
@@ -364,7 +373,7 @@ definitions:
       status: "live"
       type: "mashup-edit"
       genre: "electro-house"
-      duration: "5:53"
+      duration: 230
       link: "/ivanvoltes/thinking-about-fcking-go"
       images: 
         small: "https://d2la6fe27fmy37.cloudfront.net/b36f1c6bd397b50ef8586c173b4e1fff.jpg"
@@ -412,7 +421,7 @@ definitions:
       genre: 
         type: "string"
       duration: 
-        type: "string"
+        type: "integer"
       link: 
         type: "string"
       images: 
@@ -475,7 +484,7 @@ definitions:
       id: 123456
       name: "John Doe"
       location: "Amsterdam, Netherlands"
-      totals:
+      stats:
         tracks: 10
         support: 4
         followers: 2452
@@ -490,7 +499,7 @@ definitions:
     - "id"
     - "name"
     - "location"
-    - "totals"
+    - "stats"
     - "images"
     - "link"
     - "verified"
@@ -504,6 +513,17 @@ definitions:
         type: "string"
       link:
         type: "string"
+      stats:
+        type: "object"
+        properties:
+          tracks:
+            type: "integer"
+          supports:
+            type: "integer"
+          followers:
+            type: "integer"
+          following:
+            type: "integer"
       images:
         type: "object"
         properties:
