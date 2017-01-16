@@ -313,7 +313,7 @@ paths:
             $ref: "#/definitions/Empty"
   /waveforms/{md5hash}:
     get:
-      description: "Retrieve an array of waveform points of a track"
+      description: "Retrieve an array of waveform points of a track, will return an array of 1800 points with values between 0 and 1. The link to a waveform of a track is returned when calling `POST /tracks/{id}/play`"
       produces:
       - "application/json"
       parameters:
@@ -326,13 +326,6 @@ paths:
           description: "200 response"
           schema:
             $ref: "#/definitions/Waveform"
-          headers:
-            Access-Control-Allow-Origin:
-              type: "string"
-            Access-Control-Allow-Methods:
-              type: "string"
-            Access-Control-Allow-Headers:
-              type: "string"
         404:
           description: "404 response"
 securityDefinitions:
@@ -417,6 +410,10 @@ definitions:
         liked: false
         owner: false
         starred: false
+      sources:
+        download: null
+        stream: null
+        waveform: "https://api.demodrop.com/v1.0/waveforms/d79c7764045bef5a63f4c371b5de6bcc.json"
     properties:
       id: 
         type: "integer"
@@ -475,6 +472,15 @@ definitions:
             type: "boolean"
           starred: 
             type: "boolean"
+      sources: 
+        type: "object"
+        properties:
+          waveform: 
+            type: "string"
+          stream: 
+            type: "string"
+          download: 
+            type: "string"
   Users:
     type: "object"
     required:
@@ -576,12 +582,12 @@ definitions:
     required:
     - "points"
     properties:
-      token:
-        type: "string"
       points:
         type: "array"
         items:
           type: "integer"
+          minimum: 0
+          maximum: 1
   Login:
     type: "object"
     required:
