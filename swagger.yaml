@@ -384,7 +384,7 @@ definitions:
         name: "Ivan Voltes"
         location: null
         link: null
-        totals: 
+        stats: 
           tracks: 0
           support: 0
           followers: 0
