@@ -24,6 +24,7 @@ paths:
         in: "header"
         required: true
         type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - in: "body"
         name: "Login"
         required: true
@@ -44,6 +45,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "Accept"
         in: "header"
         required: false
@@ -63,6 +69,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "id"
         in: "path"
         required: true
@@ -77,6 +88,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "id"
         in: "path"
         required: true
@@ -95,6 +111,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "id"
         in: "path"
         required: true
@@ -110,6 +131,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "id"
         in: "path"
         required: true
@@ -125,6 +151,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "id"
         in: "path"
         required: true
@@ -140,6 +171,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "Accept"
         in: "header"
         required: false
@@ -179,6 +215,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "Accept"
         in: "header"
         required: false
@@ -202,6 +243,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "id"
         in: "path"
         required: true
@@ -216,6 +262,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "id"
         in: "path"
         required: true
@@ -230,6 +281,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "id"
         in: "path"
         required: true
@@ -245,6 +301,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "id"
         in: "path"
         required: true
@@ -259,6 +320,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "id"
         in: "path"
         required: true
@@ -273,6 +339,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "id"
         in: "path"
         required: true
@@ -288,6 +359,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "id"
         in: "path"
         required: true
@@ -302,6 +378,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "id"
         in: "path"
         required: true
@@ -317,6 +398,11 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "x-api-key"
+        in: "header"
+        required: true
+        type: "string"
+        default: "FuVd5feuhR8Lfp2ONMhtq7TTRrFepmd5t857Qude"
       - name: "md5hash"
         in: "path"
         required: true
